@@ -10,8 +10,6 @@ This document is a curriculum for training new employees to learn the basics of 
 
 Slightly customized for Neumann.
 
-## 概要
-
 ## Overview
 
 ## System Requirements
