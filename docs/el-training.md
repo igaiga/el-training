@@ -66,7 +66,7 @@ At the end of this curriculum, students are expected to be able to master the fo
 
 We recommend the following books as recommended reading for the training curriculum.
 
-- Agile Web Development with Rails 6 [https://pragprog.com/titles/rails6/agile-web-development-with-rails-6/]
+- [Agile Web Development with Rails 6](https://pragprog.com/titles/rails6/agile-web-development-with-rails-6/)
 
 Or original contents Japanese Book.
 
