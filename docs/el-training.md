@@ -1,221 +1,217 @@
 # el-training
 
-## このカリキュラムについて
+## Original Contents (Japanese)
 
-この文書は、万葉で必須とされるRuby on Railsとその周辺技術の基礎を習得するための新入社員教育用カリキュラムです。
-新入社員の能力によらず、必ず一通りのステップを実施していただきます。
-研修期間は特に定めておりません。
-すべてのステップを完了した時点で研修修了となります。
+https://github.com/everyleaf/el-training
 
-本カリキュラムでは、以下の登場人物を想定しています。
+## About this curriculum
 
-- 新入社員 : 本カリキュラムの受講者です。
-- サポーター : 新入社員の教育・指導・助言を行います。また、新入社員と相談して仕様を一緒に決めたりする役割も担います。
+This document is a curriculum for training new employees to learn the basics of Ruby on Rails and its peripheral technologies.
 
-指導について、サポーターがどの程度関与するかどうかはサポーターの裁量に一任します。また、研修期間については、新入社員のスキルレベルや社内の案件状況を考慮して、サポーターの方であらかじめ目安を設定する予定です。
+Slightly customized for Neumann.
 
 ## 概要
 
-### システムの要件
+## Overview
 
-本カリキュラムでは、課題としてタスク管理システムを開発していただきます。
-タスク管理システムでは、以下のことを行いたいと考えています。
+## System Requirements
 
-- 自分のタスクを簡単に登録したい
-- タスクに終了期限を設定できるようにしたい
-- タスクに優先順位をつけたい
-- ステータス（未着手・着手・完了）を管理したい
-- ステータスでタスクを絞り込みたい
-- タスク名・タスクの説明文でタスクを検索したい
-- タスクを一覧したい。一覧画面で（優先順位、終了期限などを元にして）ソートしたい
-- タスクにラベルなどをつけて分類したい
-- ユーザ登録し、自分が登録したタスクだけを見られるようにしたい
+In this curriculum, you will develop a task management system as your assignment.
+In the task management system, we would like to do the following
 
-また、上記の要件を満たすにあたって、次のような管理機能がほしいと考えています。
+- We want to be able to register my tasks easily.
+- We want to be able to set an end date for my tasks.
+- We want to be able to prioritize my tasks.
+- We want to be able to manage the status of tasks (Started, Not Started, Completed).
+- We want to narrow down tasks by status.
+- We want to search tasks by task name or task description.
+- We want to see a list of tasks. We want to sort tasks in the list screen (based on priority, due date, etc.)
+- We want to classify tasks with labels.
+- We want to register as a user and be able to see only the tasks I have registered.
 
-- ユーザの管理機能
+In addition, we would like to have the following management functions to meet the above requirements.
 
-### サポートブラウザ
+- User management functions
 
-- サポートブラウザはmacOS/Chrome各最新版を想定しています
+### Supported Browsers
 
-### アプリケーション（サーバ）の構成について
+- The latest version of macOS/Chrome is assumed to be supported.
 
-以下の言語・ミドルウェアを使って構築していただきたいです（いずれも最新の安定バージョン）。
+### Application (server) configuration
+
+We would like you to build it using the following languages and middleware (all of them are the latest stable versions).
 
 - Ruby
 - Ruby on Rails
 - PostgreSQL
 
-サーバについては以下を利用していただきたいです。
+For the server, we would like you to use the following
 
 - Heroku
 
-※ 性能要求・セキュリティ要求は特に定めませんが、一般的な品質で作ってください。
-  あまりにサイトのレスポンスが悪い場合は改善をしていただきます
+- We don't have any specific performance or security requirements, but please make sure your site is of general quality. If the response time of the site is too bad, we will ask you to improve it.
 
-## 本カリキュラムの最終目標
+## End goal of this curriculum
 
-本カリキュラムの終了時点で、以下の項目を習得することを想定しています。
+At the end of this curriculum, students are expected to be able to master the following items.
 
-- Railsを利用した基本的なWebアプリケーションの実装ができるようになること
-- Railsアプリケーションで一般的な環境を使ってアプリケーションを公開できること
-- 公開されたRailsアプリケーションに対して、機能の追加やデータのメンテナンスができること
-- GitHubでPRをしてマージする一連の流れを習得すること。また、それに必要なGitのコマンドを習得すること
-  - 適切な粒度でコミットができること
-  - 適切にPRの説明文が書けること
-  - レビューに対する対応と修正が一通りできること
-- 不明な点を適切なタイミングでチームメンバーや関係者に（今回はサポーターになります）口頭やチャットなどで質問ができること
+- Be able to implement a basic web application using Rails.
+- Be able to publish a Rails application using common environments.
+- Be able to add features and maintain data to published Rails applications.
+- To be able to learn the process of PR and merging on GitHub. Also, learn the Git commands necessary for this.
+  - To be able to commit with appropriate granularity.
+  - To be able to write an appropriate PR description.
+  - Be able to respond to reviews and make corrections.
+- To be able to ask questions to team members or other relevant people via chat or other means at the right time if something is unclear.
 
-## 推奨図書
+## Recommended Books
 
-研修カリキュラムを進めるにあたって、以下の書籍を推奨図書としてオススメします。
+We recommend the following books as recommended reading for the training curriculum.
+
+- Agile Web Development with Rails 6 [https://pragprog.com/titles/rails6/agile-web-development-with-rails-6/]
+
+Or original contents Japanese Book.
 
 - [現場で使える Ruby on Rails 5速習実践ガイド](https://book.mynavi.jp/ec/products/detail/id=93905)
 
-現場で使える Ruby on Rails 5速習実践ガイドでは、研修カリキュラムと同様にタスク管理システムを題材としています。
-そのため、本研修を進める上で参考になる点が多数あるかと思います。
+## Useful topics for development
 
-また、本研修ではカバーしきれなかった内容や、チーム開発の進め方についても解説されています。ぜひ参考にしてみてください。
+Topics that could not be included in a specific assignment step but should be used are listed in topics.md. Please refer to it and use it as needed in implementing the curriculum.
 
-## 開発に役立つトピック集
+## Assignment Steps
 
-特定の課題ステップには含められませんでしたが、活用してほしいトピックについて topics.md にまとめています。カリキュラムを実施する上で、必要に応じて参照して活用してください。
+### Step 1: Let's set up a Rails development environment.
 
-## 課題ステップ
+#### 1-1: Install Ruby
 
-### ステップ1: Railsの開発環境を構築しよう
+- Use [rbenv](https://github.com/rbenv/rbenv) to install the latest version of Ruby
+- Make sure the `ruby -v` command shows the version of Ruby
 
-#### 1-1: Rubyのインストール
+#### 1-2: Install Rails
 
-- [rbenv](https://github.com/rbenv/rbenv)を利用して最新バージョンのRubyをインストールしてください
-- `ruby -v` コマンドでRubyのバージョンが表示されることを確認してください
+- Let's install Rails with the Gem command
+- Make sure you have the latest version of Rails installed
+- Make sure you can see the version of Rails with the `rails -v` command
 
-#### 1-2: Railsのインストール
+#### 1-3: Install the database (PostgreSQL)
 
-- GemコマンドでRailsをインストールしましょう
-- 最新バージョンのRailsをインストールしてください
-- `rails -v` コマンドでRailsのバージョンが表示されることを確認してください
+- Let's install PostgreSQL on your OS.
 
-#### 1-3: データベース（PostgreSQL）のインストール
+### Step 2: Create a repository on GitHub.
 
-- 手元のOSでPostgreSQLをインストールしましょう
-  - macOSの場合は `brew` などでインストールしてください
+- Install Git on your computer.
+- Come up with a name for your app (= repository name)
+- Create your repository.
+  - If you don't have an account, get one.
+  - Then, create an empty repository
 
-### ステップ2: GitHubにリポジトリを作成しよう
+### Step 3: Let's create a Rails project.
 
-- 手元にGitをインストールしましょう
-  - macOSの場合は `brew` などでインストールしてください
-  - `gitconfig` でユーザ名、メールアドレスを登録しましょう
-- アプリ名（=リポジトリ名）を考えましょう
-- リポジトリを作成しましょう
-  - アカウントがない場合は取得しましょう
-  - その上で空のリポジトリを作成しましょう
+- Use the `rails new` command to create the minimum required directories and files for your application.
+  - If you use the -d postgresql option when running rails new, step 5 will be easier
+- Create a directory called `docs` directly under the `rails new` project directory (the directory of your app name) and commit this documentation file.
+  - This is to keep the specification of the app under control and available for viewing at any time.
+- Push your app to the repository you created on GitHub.
+- Put the version of Ruby you're using in your `Gemfile` (make sure Rails already has a version listed).
 
-### ステップ3: Railsプロジェクトを作成しよう
+### Step 4: Think about the application you want to build.
 
-- `rails new` コマンドでアプリケーションに最低限必要なディレクトリやファイルを作成しましょう
-- `rails new` してできたプロジェクトのディレクトリ（アプリ名のディレクトリ）の直下に `docs` というディレクトリを作り、この文書ファイルをコミットしましょう
-  - このアプリの仕様を管理下に置き、いつでも見られるようにするためです
-- 作成したアプリをGitHub上に作成したリポジトリにpushしましょう
-- バージョンを明示するため、利用するRubyのバージョンを `Gemfile` に記載しましょう（Railsは既にバージョンが記載されていることを確認しましょう）
+- Before proceeding with the design, think about what kind of application you want to create. (Screen design by paper prototyping is recommended.
+  - Also, think about how the application will be used (will it be published on the Internet, for internal use, etc...).
+- Read the requirements of the system and think about the data structure you need.
+  - What kind of model (tables) do you need?
+  - What kind of information is needed in the tables?
+- Once you have a data structure in mind, draw it by hand in an ER diagram or model diagram.
+  - When you are done, take a picture of it and put it in the repository.
+  - Describe the table schema in `README.md` (model name, column name, data type)
 
-### ステップ4: 作りたいアプリケーションのイメージを考えよう
+There is no need to create a model diagram for the correct answer at this time. It is not necessary to create the correct model diagram at this time, but let's make it as an assumption at this time (if you think it is wrong in future steps, you can modify it).
 
-- 設計を進める前に、どのようなアプリになるか完成イメージを（サポーターと一緒に）考えてみましょう。ペーパープロトタイピングによる画面設計などがおすすめです
-  - また、このアプリがどのような形で利用されるか（インターネットに公開するのか、社内向けか、etc…）についても（サポーターと一緒に）考えてみましょう
-- システムの要件を読んで、必要なデータ構造を考えてみましょう
-  - どのようなモデル（テーブル）が必要そうか
-  - テーブル内にどのような情報が必要そうか
-- データ構造を考えたら、それをモデル図に手書きで書いてみましょう
-  - 完成したら撮影して、リポジトリに入れましょう
-  - `README.md` にテーブルスキーマを記載しましょう（モデル名・カラム名・データ型）
+### Step 5: Configure the database connection (perimeter settings).
 
-※ 現時点で正解のモデル図を作成する必要はまだありません。現時点での想定として作ってみましょう（今後のステップで間違いと思ったら改修していくイメージです）
+- First, create a new topic branch in Git.
+  - After that, you can work on the topic branch and commit.
+- Install `pg` (database driver for PostgreSQL) in `Gemfile`.
+- Configure the `database.yml`.
+- Create a database with the command `rails db:create`.
+- Check the connection to the database with the `rails db` command.
+- Create a PR on GitHub and have it reviewed.
+  - When you are working on a project and want others to review it, submit a PR in Draft or WIP (Work In Progress).
+  - If you get comments, please respond to them.
+  - In our work, we merge into the master branch when it is Approved (= LGTM, Looks Good To Me), but there are days when the reviewer is not available, so you can merge into master without review.
+    - If there are comments that need to be fixed later, please do so at that time.
 
-### ステップ5: データベースの接続設定（周辺設定）をしよう
+### Step 6: Configure RuboCop
+- Let's set up RuboCop as a linter/formatter.
+- For this curriculum, we'll use [retrieva-cop](https://github.com/retrieva/retrieva-cop), which has been tweaked to work with Rails apps.
+- Install [retrieva-cop](https://github.com/retrieva/retrieva-cop) in your `Gemfile`.
+- Install GitHub Actions so that RuboCop will run when you create a PR.
+  - Considering the level of difficulty, it is also acceptable for a supporter to run it.
+- After that, let's discuss and update the coding conventions as needed.
 
-- まずGitで新たにトピックブランチを切りましょう
-  - 以降、トピックブランチ上で作業をしてコミットをしていきます
-- Bundlerをインストールしましょう
-- `Gemfile` で `pg` （PostgreSQLのデータベースドライバ）をインストールしましょう
-- `database.yml` の設定をしましょう
-- `rails db:create` コマンドでデータベースの作成をしましょう
-- `rails db` コマンドでデータベースへの接続確認をしましょう
-- GitHub上でPRを作成してレビューしてもらいましょう
-  - 必要に応じて WIP（Work In Progress) で PR を出すようにしましょう。詳しくはトピック集を参照してください
-  - コメントがついたらその対応を行ってください。LGTM（Looks Good To Me）が2つついたらmasterブランチにマージしましょう
+### Step 7: Let's create a task model.
 
-### ステップ6: RuboCop を設定しよう
-- Linter/ Formatter として RuboCop を設定しましょう
-- 当カリキュラムでは Rails アプリ作成にあわせて規約を調整済の [retrieva-cop](https://github.com/retrieva/retrieva-cop) を利用します
-- `Gemfile` で [retrieva-cop](https://github.com/retrieva/retrieva-cop) をインストールしましょう
-- Circle CI を導入して、PR作成時に RuboCop が実行されるようにしましょう
-  - 難易度を考えて、サポーターが実施する形でも構いません
-- 以降、コーディング規約はサポーター・レビュワーと相談しながら必要に応じて更新していきましょう
+Let's create a CRUD to manage the tasks.
+First, let's create a simple structure where only the name and details can be registered.
 
-### ステップ7: タスクモデルを作成しよう
+- Use the `rails generate` command to create the model classes needed for the task CRUD.
+- Let's create a migration and use it to create a table.
+  - It is important to ensure that the migration can be reverted to a previous state! Make it a habit to run `redo` to check!
+  - Don't forget to set the DB constraints!
+- Make sure that you can connect to the database via a model with the `rails c` command.
+  - At this time, let's try to create a record in ActiveRecord.
+- Set up validations
+  - Let's figure out which column and which validation to add.
+- Create a PR on GitHub and have it reviewed
 
-タスクを管理するためのCRUDを作成します。
-まずは名前と詳細だけが登録できるシンプルな構成で作りましょう。
+### Step 8: Let's make it possible to view, register, update, and delete tasks.
 
-- `rails generate` コマンドでタスクのCRUDに必要なモデルクラスを作成しましょう
-- マイグレーションを作成し、これを用いてテーブルを作成しましょう
-  - マイグレーションは1つ前の状態に戻せることを担保できていることが大切です！ `redo` を流して確認する癖をつけましょう
-  - DBの制約についても忘れず設定するようにしましょう
-- `rails c` コマンドでモデル経由でデータベースに接続できることを確認しましょう
-  - この時に試しにActiveRecordでレコードを作成してみましょう
-- バリデーションを設定しましょう
-  - どのカラムにどのバリデーションを追加したらよいか考えてみましょう
-- GitHub上でPRを作成してレビューしてもらいましょう
+Let's create a task list screen, detail screen, create screen, edit screen, and delete function.
 
-### ステップ8: タスクを閲覧・登録・更新・削除できるようにしよう
+If you create all these functions at once, your PR will tend to be huge.
+Therefore, in Step 8, we will divide the PR into multiple parts.
 
-タスクの一覧画面、詳細画面、作成画面、編集画面、削除機能を作成しましょう。
+In future steps, if your PR is likely to be large, consider whether you can split it into two or more PRs.
+In other words, it is perfectly fine if the Step and PR are not one-to-one.
 
-これらの機能を一度に作成すると、PRが巨大になりがちです。
-そのため、ステップ8ではPRを複数に分けて進めていきます。
+### Step 8-1: Create Task List and Detail Screens
 
-今後のステップでも、PRが大きくなりそうな場合は2つ以上に分けてPRを出せないか検討しましょう。
+- Let's make it possible to display the tasks created in step 7 in the list and detail screens.
+- Let's create controllers and views with the `rails generate` command.
+  - Consult with your supporters to decide which template engine to use.
+- Add the necessary implementations to your controllers and views.
+- Edit `routes.rb` so that `http://localhost:3000/` will display the task list screen.
+- Explain to your supporter what is going on between the web browser and the server.
+- Create a PR on GitHub for them to review.
 
-### ステップ8-1: タスクの一覧画面、詳細画面を作成しましょう
+### Step 8-2: Create and Edit Task Screens
 
-- ステップ7で作成したタスクを、一覧画面、詳細画面で表示できるようにしましょう
-- `rails generate` コマンドでコントローラとビューを作成しましょう
-  - どのテンプレートエンジンを採用するかはサポーターと相談して決めましょう
-- コントローラとビューに必要な実装を追加しましょう
-- `routes.rb` を編集して、 `http://localhost:3000/` でタスクの一覧画面が表示されるようにしましょう
-- Webブラウザとサーバの間でどのような処理が行われているか、サポーターに説明してみましょう
-- GitHub上でPRを作成してレビューしてもらいましょう
+- Let's make it possible to create and edit tasks on the screen.
+- Display a flash message on the screen after each creation or update.
+  - When a validation error occurs, display the error message on the screen.
+- Create a PR on GitHub and have it reviewed
 
-### ステップ8-2: タスクの作成画面、編集画面を作成しましょう
+### Step 8-3: Make sure you can delete tasks
 
-- 画面上からタスクの作成や編集ができるようにしましょう
-- 作成、更新後はそれぞれflashメッセージを画面に表示させましょう
-  - バリデーションエラーが発生した場合は、エラーメッセージを画面に表示させましょう
-- GitHub上でPRを作成してレビューしてもらいましょう
+- Let's make it possible to delete the task you created.
+- Display a flash message on the screen after deletion.
+- Create a PR on GitHub and have it reviewed.
 
-### ステップ8-3: タスクを削除できるようにしましょう
+### Step 8-4: Look back at the code you've added
 
-- 作成したタスクを削除できるようにしましょう
-- 削除後はflashメッセージを画面に表示させましょう
-- GitHub上でPRを作成してレビューしてもらいましょう
+- Explain to your supporters about the code you added in steps 8-1 to 8-3.
+  - About classes, methods and variables
+  - About the process flow
 
-### ステップ8-4: 追加したコードを振り返ってみよう
+### Step 9: Let's get to know SQL.
 
-- ステップ8-1〜8-3で追加したコードについて、サポーターに説明してみましょう
-  - クラス、メソッド、変数について
-  - 処理の流れについて
-
-### ステップ9: SQLに触れてみよう
-
-- データベースを操作しましょう
-  - `rails db` コマンドでデータベースに接続しましょう
-  - SQLでタスクの閲覧、作成、更新、削除をしましょう
-- タスクの一覧画面にアクセスして、SQLのログが流れていることを確認しましょう
-  - どのようなSQLが実行されているか、サポーターに説明してみましょう
-- ActiveRecordのメソッドでどういうSQLが実行されるか確認してみましょう
-  - `rails c` で `find` や `where` などを実行してみましょう
+- Let's work with the database.
+  - Connect to a database with the `rails db` command.
+  - Use SQL to browse, create, update, and delete tasks.
+- Access the task list screen and check the SQL log.
+  - Explain to your supporter what kind of SQL is being executed.
+- Check what kind of SQL is executed by the ActiveRecord methods.
+  - Try to execute `find`, `where`, etc. with `rails c`.
 
 ### ステップ10: テストを書こう
 
