@@ -110,6 +110,7 @@ Topics that could not be included in a specific assignment step but should be us
 - Create a directory called `docs` directly under the `rails new` project directory (the directory of your app name) and commit this documentation file.
   - This is to keep the specification of the app under control and available for viewing at any time.
 - Push your app to the repository you created on GitHub.
+  - Please submit the URL of your GitHub repository on Google classroom. Everyleaf curriculum is long, so we will code review the merged PRs along the way. Also, if you wait for the review, it will be hard to get it reviewed, so you can keep merging without review.
 - Put the version of Ruby you're using in your `Gemfile` (make sure Rails already has a version listed).
 
 ### Step 4: Think about the application you want to build.
@@ -211,78 +212,82 @@ In other words, it is perfectly fine if the Step and PR are not one-to-one.
 - Check what kind of SQL is executed by the ActiveRecord methods.
   - Try to execute `find`, `where`, etc. with `rails c`.
 
-### ステップ10: テストを書こう
+### Step 10: Write the tests.
 
-- specを書くための準備をしましょう
-  - `spec/spec_helper.rb` 、 `spec/rails_helper.rb` を用意しましょう
-- model specをバリデーションに対して書いてみましょう
-  - 実際はそれほどバリデーションのテストは書きませんが、model spec への理解を深めるためにやってみましょう
-- system specをタスク機能に対して書いてみましょう
-- Circle CI に RSpec を連携し、Slackに通知するようにしましょう
-  - ステップ6と同様、サポーターが実施する形でも構いません
-- 参考書籍：https://leanpub.com/everydayrailsrspec-jp
+- TODO: Add igaiga text
+- Get ready to write specs!
+  - Prepare `spec/spec_helper.rb` and `spec/rails_helper.rb`.
+- Let's write a model spec for validation
+  - We won't actually write many validation tests, but let's try to get a better understanding of the model spec.
+- Let's try writing a system spec for a task function.
+- ~~ Connect RSpec to GitHub Actions and have it send notifications to your channel on Discord. ~~
+  - You don't have to do this issue.
+- Reference books for those who want to learn more:
+  - English: https://leanpub.com/everydayrailsrspec
+  - Japanese: https://leanpub.com/everydayrailsrspec-jp
 
-### ステップ11: アプリの日本語部分を共通化しよう
+### Step 11: Let's make the Japanese part of our app common
 
-- Railsのi18nの仕組みを利用して、validation エラーメッセージを日本語で出力するようにしましょう
+- Let's use the i18n mechanism in Rails to output validation error messages in Japanese or Nepalese.
 
-### ステップ12: Railsのタイムゾーンを設定しよう
+### Step 12: Let's set the timezone for Rails
 
-- Railsのタイムゾーンを日本（東京）に設定しましょう
+- Let's set the timezone for Rails to Japan Standard Time (Tokyo, JST) or Nepal Standard Time (NST).
 
-### ステップ13: タスク一覧を作成日時の順番で並び替えよう
+### Step 13: Sort the task list by created_at.
 
-- 現在IDの順で並んでいますが、これを作成日時の降順で並び替えてみましょう
-- 並び替えがうまく行っていることをsystem specで書いてみましょう
+- The tasks are currently sorted by ID, but let's try to sort them by created_at in descending order.
+- Let's write a system spec to show that the sorting is working.
 
-### ステップ14: デプロイをしよう
+### Step 14: Let's Deploy
 
-- masterブランチにシンプルなタスク管理システムができたので、デプロイしてみましょう。
-- Herokuにデプロイを実施してみましょう
-  - アカウントがなければ作成しましょう
-- デプロイされたHeroku上のアプリを触ってみましょう
-  - これからはこのアプリにタスクを登録して開発を進めましょう
-  - ※ ただし、Herokuのアプリケーションはインターネットでどこでも参照できるので、公開してはまずい情報は載せないようにしましょう
-    - Basic認証をこの時点でいれてもいいかもしれません
-  - 今後、ステップが終わるたびにHerokuへ自分のアプリを継続的にデプロイしましょう
-- デプロイの方法を `README.md` に記載しましょう
-  - その際に、このアプリで使っているフレームワークのバージョン情報なども記載しておくとなおよいです
+- Now that we have a simple task management system in our master branch, let's deploy it.
+- Let's try to deploy to Heroku.
+  - If you don't have an account, create one.
+- Let's try to touch the deployed application on Heroku.
+  - From now on, let's register tasks to this application and proceed with development.
+  - However, since Heroku applications can be accessed anywhere on the Internet, make sure you don't post any information that you don't want to make public.
+    - You may want to add basic authentication at this point.
+  - From now on, you should continuously deploy your application to Heroku after each step.
+- Describe how to deploy in `README.md`.
+  - It would be better if you include the version information of the framework you are using in this app.
 
-### ステップ15: 終了期限を追加しよう
+### Step 15: Add a due date
 
-- タスクに対して、終了期限を登録できるようにしてみましょう
-- 一覧画面で、終了期限でソートできるようにしましょう
-- specを拡充しましょう
-- PRしてレビューをしてもらったら、リリースしてみましょう
+- Let's add an expiration date to a task.
+- Let's make it possible to sort by due date in the list view.
+- Let's expand the spec.
+- Let's release it.
 
-### ステップ16: ステータスを追加して、検索できるようにしよう
+### Step 16: Let's add statuses and make them searchable.
 
-- ステータス（未着手・着手中・完了）を追加してみましょう
-  - 【オプション】初学者ではない場合はstateを管理するGemを導入しても構いません
-- 一覧画面でタイトルとステータスで検索ができるようにしましょう
-  - 【オプション】初学者ではない場合はransackなどの検索の実装を便利にするGemを導入しても構いません
-- 絞り込んだ際、ログを見て発行されるSQLの変化を確認してみましょう
-  - 以降のステップでも必要に応じて確認する癖をつけましょう
-- 検索インデックスを貼りましょう
-  - ある程度まとまったテストデータを用意して log/development.log を見ながら動作確認を行い、インデックスの追加により速度が改善されることを確認しましょう
-  - 【オプション】PostgreSQLの explain などを使用して、データベース側でのインデックス使用状況なども見てみましょう
-- 検索に対してmodel specを追加してみましょう（system specも拡充しておきましょう）
+- Let's add some statuses (not started, in progress, completed).
+  - Optional: If you are not a beginner, you can install a gem to manage states.
+- Let's make it possible to search by title and status in the list screen.
+  - Optionally, if you are not a beginner, you can introduce a Gem that makes the implementation of search more convenient, such as ransack.
+    - igaiga: I would recommend not using Ransack.
+- When you narrow down the search, check the log to see the changes in the SQL issued.
+  - Make it a habit to check this in the following steps as necessary.
+- Attach a search index.
+  - Prepare a slightly larger amount of test data, check the log/development.log, and confirm that the speed is improved by adding the index.
+  - Optionally, you can use PostgreSQL's explain to check the index usage on the database side.
+- Let's add a model spec to the search (system spec should also be expanded).
 
-### ステップ17: 優先順位を設定しよう（※類似した実装経験のある人は省略可）
+### Step 17: Set priorities
 
-- タスクに対して、優先順位（高中低）を登録できるようにしましょう
-- 優先順位でソートできるようにしましょう
-- system specを拡充しましょう
-- PRしてレビューをしてもらったら、リリースしてみましょう（以降続けてください）
+- Let's make it possible to register a priority (high, medium, low) for tasks.
+- Let's make it possible to sort by priority.
+- Expand the system spec
+- Let's release it (and continue)
 
-### ステップ18: ページネーションを追加しよう
+### Step 18: Add pagination
 
-- KaminariというGemを使って一覧画面にページネーションを追加してみましょう
+- Let's try to add pagination to the list screen using the Kaminari gem.
 
-### ステップ19: デザインを当てよう
+### Step 19: Apply the design.
 
-- Bootstrapを導入して、これまで作成したアプリにデザインを当てましょう
-  - 【オプション】自分でCSSを書いてデザインする
+- Let's install Bootstrap and apply the design to the app we've created so far.
+  - Optionally, you can write your own CSS to design it.
 
 ### ステップ20: ユーザモデルを作成しよう
 
