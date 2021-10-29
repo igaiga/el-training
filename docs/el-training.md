@@ -220,7 +220,7 @@ In other words, it is perfectly fine if the Step and PR are not one-to-one.
 - Let's write a model spec for validation
   - We won't actually write many validation tests, but let's try to get a better understanding of the model spec.
 - Let's try writing a system spec for a task function.
-- ~~ Connect RSpec to GitHub Actions and have it send notifications to your channel on Discord. ~~
+- ~~Connect RSpec to GitHub Actions and have it send notifications to your channel on Discord.~~
   - You don't have to do this issue.
 - Reference books for those who want to learn more:
   - English: https://leanpub.com/everydayrailsrspec
