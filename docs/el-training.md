@@ -341,31 +341,35 @@ In other words, it is perfectly fine if the Step and PR are not one-to-one.
 - Configure the error page appropriately for your situation.
   - At least two types of status codes, 404 and 500, should be required.
 
-## あとがき
+## Afterword
 
-お疲れさまでした。
-あなたは教育カリキュラムを一通り完遂しました!!
+Thank you for your hard work. You have completed the entire educational curriculum!
 
-このカリキュラムでは触れきれませんでしたが、今後は以下のトピックなどが必要になると思うので、学習を進めていくとよいと思います（案件を通じて学ぶことも多いと思います）。
+Although we couldn't touch on it in this curriculum, we think you will need the following topics and others in the future, so it would be good for you to continue learning (you will learn a lot through the works).
 
-- Webアプリケーションの基本的な理解を深める
-  - HTTPとHTTPSに関する理解
-- Railsのもう少し進んだ使い方を習得する
-  - STI
-  - ロギング
-  - 明示的なトランザクション
-  - 非同期処理
-  - アセットパイプライン（どちらかというとリリース系のトピック）
-- JavaScriptやCSSなどのフロントエンドに関するより高度な理解
-- データベースに対する理解を深める
+- Develop a basic understanding of web applications
+  - Understand HTTP and HTTPS
+
+- Learn to use Rails in a more advanced way
+  - STI, Polymorphic Associations, Delegated Types
+  - Logging
+  - Explicit Transactions
+  - Asynchronous processing
+  - Asset pipeline (more of a release type topic)
+
+- More advanced understanding of the front-end, including JavaScript and CSS
+
+- Deepen your understanding of DB
   - SQL
-  - よりパフォーマンスを重視したクエリの構築
-  - インデックスの理解をより深める
-- サーバ環境に関するより多くの理解
+  - Build more performance-driven queries
+  - Deeper understanding of indexes
+
+- More understanding of the server environment
   - Linux OS
-  - Webサーバ（Nginx）の設定
-  - アプリケーションサーバ（Unicorn）の設定
-  - PostgreSQLに関する設定への理解
-- リリースに関するツールの理解
+  - Configuring the web server (Nginx)
+  - Configuring the application server (Puma, Unicorn)
+  - Understanding the configuration related to PostgreSQL
+
+- Understanding of release related tools
   - Capistrano
   - Ansible
