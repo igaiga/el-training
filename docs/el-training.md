@@ -289,57 +289,57 @@ In other words, it is perfectly fine if the Step and PR are not one-to-one.
 - Let's install Bootstrap and apply the design to the app we've created so far.
   - Optionally, you can write your own CSS to design it.
 
-### ステップ20: ユーザモデルを作成しよう
+### Step 20: Let's create a user model
 
-- ユーザモデルを作成してみましょう
-- 最初のユーザをseedで作成してみましょう
-- seedで作った最初のユーザとタスクが紐づくようにしましょう
-  - 関連に対してインデックスを貼りましょう
-  - ※ Herokuにデプロイした際に、すでに登録されているタスクとユーザが紐づいているようにしてください（データメンテナンス）
+- Let's create a user model.
+- Let's create the first user with seed.
+- Let's make sure that the first user created with seed is associated with a task.
+  - Add DB index the relation.
+  - When deploying to Heroku, please make sure that the tasks and users are already registered (data maintenance).
 
-### ステップ21: ログイン/ログアウト機能を実装しよう
+### Step 21: Let's implement the login/logout function.
 
-- 追加のGemを使わず、自分で実装してみましょう
-  - DeviseなどのGemを使わないことで、HTTPのCookieやRailsにおけるSessionなどの仕組みについて理解を深めることが目的です
-  - また、一般的な認証についての理解を深めることも目的にしています（パスワードの取り扱いについてなど）
-- ログイン画面を実装しましょう
-- ログインしていない場合は、タスク管理のページに遷移できないようにしましょう
-- タスクを作成したときに、タスクをログイン中のユーザに紐付けるようにしましょう
-- 自分が作成したタスクだけを表示するようにしましょう
-- ログアウト機能を実装しましょう
+- Let's try to implement it by ourselves without using any additional gem.
+  - By not using Devise or any other Gem, the goal is to gain a better understanding of how HTTP cookies and Sessions work in Rails.
+  - We also aim to deepen our understanding of authentication in general (e.g. password handling).
+- Let's implement the login screen.
+- If you are not logged in, you should not be able to go to the task management page.
+- When a task is created, it should be associated with the user who is logged in.
+- Show Only Tasks Created by You
+- Let's Implement the Logout Function
 
-### ステップ22: ユーザの管理画面を実装しよう
+### Step 22: Let's implement a user management screen.
 
-- 画面上に管理メニューを追加しましょう
-- 管理画面にはかならず `/admin` というURLを先頭につけるようにしましょう
-  - `routes.rb` に追加する前に、あらかじめURLやルーティング名（ `*_path` となる名前）を想定して設計してみましょう
-- ユーザ一覧・作成・更新・削除を実装しましょう
-- ユーザを削除したら、そのユーザが抱えているタスクを削除するようにしてみましょう
-- ユーザの一覧画面で、ユーザが持っているタスクの数を表示するようにしてみましょう
-  - N+1問題を回避するための仕組みを取り入れましょう
-- ユーザが作成したタスクの一覧が見られるようにしてみましょう
+- Let's add an administration menu on the screen.
+- Make sure to prefix the admin screen with the URL `/admin`.
+  - Before adding to `routes.rb`, let's design the URL and routing name (the name that will become `*_path`) in advance.
+- Implement user list, create, update, and delete.
+- When a user is deleted, the user's tasks will be deleted.
+- Display the number of Tasks a User has in the User index page.
+  - Let's introduce a mechanism to avoid the N+1 problem.
+- Let's try to see the list of Tasks created by a User.
 
-### ステップ23: ユーザにロールを追加しよう
+### Step 23: Let's add roles to users.
 
-- ユーザに管理ユーザと一般ユーザを区別するようにしてみましょう
-- 管理ユーザだけがユーザ管理画面にアクセスできるようにしてみましょう
-  - 一般ユーザが管理画面にアクセスした場合、専用の例外を出してみましょう
-  - 例外を補足して、適切にエラーページを表示しましょう（ステップ25で実施しても構いません）
-- ユーザ管理画面でロールを選択できるようにしましょう
-- 管理ユーザが1人もいなくならないように削除の制御をしましょう
-  - モデルのコールバックを利用してみましょう
-- ※ Gemの使用・不使用は自由です
+- Let's distinguish between administrative users and general users.
+- Let's make it so that only administrative users can access the user management screen.
+  - Raise a special exception when a normal user accesses the administration screen.
+  - Supplement the exception with an appropriate error page (you can do this in step 25)
+- Make it possible to select roles in the user management screen.
+- Control the deletion of administrative users so that no one is left behind.
+  - Let's use model callbacks.
+- You are free to use or not use Gem.
 
-### ステップ24: タスクにラベルをつけられるようにしよう
+### Step 24: Let's make it possible to label tasks.
 
-- タスクに複数のラベルをつけられるようにしてみましょう
-- つけたラベルで検索できるようにしてみましょう
+- Let's add multiple Labels to Tasks.
+- Let's try to search by Label.
 
-### ステップ25: エラーページを適切に設定しよう
+### Step 25: Let's set up the error page properly.
 
-- Railsが用意しているデフォルトのエラーページを自分が作った画面にしてみましょう
-- 状況に応じて、適切にエラーページを設定しましょう
-  - ステータスコードの404ページと500ページの2種類の設定は少なくとも必須とします
+- Let's take the default error page that Rails provides and turn it into a page of our own making.
+- Configure the error page appropriately for your situation.
+  - At least two types of status codes, 404 and 500, should be required.
 
 ## あとがき
 
