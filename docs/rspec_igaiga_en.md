@@ -1,80 +1,81 @@
-[wip]
+igaiga TODO:
+- Insert this page URL into Everyleaf curriculum
 
-## RSpec基礎講座
+## RSpec tutorial
 
-- RailsでよくつかわれるテストフレームワークRSpecの基礎を学ぶ資料です
-- 自分で読んで手を動かしていく形式です
-  - この資料に書かれているコードのうち、動かせそうなものは手元で書いて動かしてみてください
-  - マイペースでやってください
-- サンプルコードリポジトリ: https://github.com/igaiga/rails6132_ruby301_rspec
-  - 説明につかっているコードがだいたい入っていると思います
-  - RailsとRubyのバージョンがちょっと古いです
+- Learn the basics of RSpec, a testing framework often used in Rails.
+- You can read and work on the code by yourself.
+  - You can write the code in this document and try to run it.
+- Sample code repository: https://github.com/igaiga/rails6132_ruby301_rspec
+  - I think you can find most of the code used in the explanation here.
+  - The version of Rails and Ruby is a bit old.
 
-## 前提知識
+## Prerequisite Knowledge
 
-- RailsでCRUDな操作を理解できること
-- 具体的にはscaffoldで作成したCRUDなアプリにテストコードを書いていきます
-- RailsのCRUDについて学ぶときは拙著「Railsの教科書」をお勧めします
+- You should be able to understand CRUD-like operations in Rails.
+- Specifically, we'll be writing test code for a CRUD application created with scaffold.
+- If you want to learn about CRUD in Rails, I recommend you to read my book "Rails Textbook".
 
-## おおまかな流れ
+## Rough flow
 
-- 環境構築
-  - RSpecコードを書くRailsアプリを作成
+- Build the environment
+  - Create a Rails app to write RSpec code.
 - Model spec
-- RSpecの基礎文法
-- FactoryBotの使い方
+- Basic RSpec syntax
+- How to use FactoryBot
 - System spec
-- モック、スタブの使い方
+- How to use mocks and stubs
 - Request spec
-- 練習問題
 
-## 環境
+## Environment
 
-- 以下よりも新しいバージョンが出ていたら、新バージョンでOKです
+- If you have a newer version than the following, you can use the newer version
 
-- Rails6.1系最新
+- Rails 6.1 series latest
     - Rails 6.1.4.2
-- Ruby3.0系最新
+- Ruby3.0 series latest
     - Ruby 3.0.2
-- rspec-rails 最新
+- rspec-rails Latest
     - rspec-rails 5.0.2
     - rspec-core 3.10.1
 
-## RSpecとminitestの違い
+## Difference between RSpec and minitest
 
-- この資料はRSpecについて説明した資料です
-- Railsのデフォルトであるminitestとの違いをかんたんに説明します
-- minitestでのテストコードの書き方は書籍「増補改訂版 パーフェクトRuby on Rails」をご参照ください
+- This document is about RSpec.
+- I'll explain the difference between RSpec and minitest, which is the default for Rails.
+- If you want to know how to write test code with minitest, please refer to the book "Perfect Ruby on Rails" (Japanese).
 
 - RSpec
-  - シェアが多く、事実上の標準
-  - 書いたことがあるエンジニアが多い
-  - 道具が豊富な反面、過度に道具をつかった構造化も書けてしまう
-  - minitestにRSpecのガワをかぶせているので、中のコードはやや追いづらい
+  - The de facto standard with a large market share.
+  - Many engineers have written it before
+  - Lots of tools, but you can also write overly-structured tests
+  - RSpec has a wrapper around the minitest, so the codes inside are a bit hard to follow
+
 - minitest
-  - Railsのデフォルト
-  - 複数DB機能など、一早く新機能が導入される
-  - シンプルで、道具はアドオンとして追加する方針
-  - シェアが少なく、書いたことがないエンジニアも多い
+  - Default in Rails
+  - New features are introduced quickly, such as multiple DBs
+  - Simple, with a policy of adding tools as add-ons
+  - Not much market share, many engineers have never written it before
 
-## 参考資料
+## References
 
-- この講座で利用する主な参考資料です
-- RSpecリファレンスページ https://relishapp.com/rspec/rspec-rails/docs
-- Railsガイド 「Railsテスティングガイド」 https://railsguides.jp/testing.html
-- Capybaraリファレンスページ: https://rubydoc.info/github/teamcapybara/capybara/master/Capybara/Node/Matchers
+- These are the main reference documents used in this course
+- RSpec reference page https://relishapp.com/rspec/rspec-rails/docs
+- Rails Guide "Testing Rails Applications": https://guides.rubyonrails.org/testing.html
+- Capybara reference page: https://rubydoc.info/github/teamcapybara/capybara/master/Capybara/Node/Matchers
 
-## RSpec環境構築
+## Building the RSpec environment
 
-- RSpecコードを書くRailsアプリを作成します
-    - 不明点があれば、サンプルコードも参照してください
-    - https://github.com/igaiga/rails6132_ruby301_rspec
+- Create a Rails app to write RSpec code
+  - Or you can use your rails app.
+    - In this case, you can skip "rails new" command.
 
 - $ rails new app_name --skip-test
-    - `--skip-test` オプションはRails標準であるminitest関連ファイルを作成しないオプションです
-    - 既にminitest込みでrails new済みのアプリへRSpecを追加するときは、RSpecを入れたあとでtestフォルダを削除すれば問題ないです
-- Gemfileを編集してrspec-rails gem追加
-    - https://github.com/rspec/rspec-rails
+  - The `--skip-test` option is an option to not create the minitest related files that are standard in Rails.
+  - If you want to add RSpec to an app that has already been rails new with minitest, just delete the test folder after adding RSpec and you're good to go.
+
+- Edit the Gemfile and add the rspec-rails gem
+  - https://github.com/rspec/rspec-rails
 
 ```Gemfile
 group :development, :test do
@@ -86,10 +87,14 @@ end
 
 - $ bundle install
 - $ bin/rails generate rspec:install
-    - 設定ファイルなどを作成します
-- 動作確認としては以下を実行すればOKです
+  - Create a configuration file.
+- To check that it works, you can run the following
   - $ bundle exec rspec spec/
-  - `0 examples, 0 failures` といった表示がでれば問題ないです
+  - If you see something like `0 examples, 0 failures`, you're good to go.
+
+- Reference: https://github.com/igaiga/rails6132_ruby301_rspec
+
+--- [wip] ---
 
 ## bin/rspec コマンドでspringをつかう
 
