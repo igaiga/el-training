@@ -206,7 +206,7 @@ end
 
 spec/models/book_spec.rb
 
-``spec/models/book_spec.rb
+```spec/models/book_spec.rb
 require 'rails_helper'
 RSpec.describe Book, type: :model do
   it "To be false if true" do # Write the "description" that will be displayed on NG after it
@@ -246,6 +246,7 @@ Finished in 0.0556 seconds (files took 0.1898 seconds to load)
 Failed examples: # List of tests that failed
 rspec . /spec/models/book_spec.rb:4
 ```
+
 ## Write a Model spec - Write a test that will be OK
 
 - Write a test that will be "true when it expects true".
@@ -319,7 +320,7 @@ end
 
 spec/models/book_spec.rb
 
-``spec/models/book_spec.rb
+```spec/models/book_spec.rb
 require 'rails_helper'
 RSpec.describe Book, type: :model do
   describe "Book#title_with_author" do
@@ -330,7 +331,7 @@ RSpec.describe Book, type: :model do
     end
   end
 end
-The ``
+```
 
 
 ## describe: a tool for separating
@@ -897,7 +898,7 @@ end
 - If you write the test code in a normal way, it will randomly succeed or fail.
 
 spec/models/book_spec.rb
-``ruby
+```ruby
 describe "Book#bonus" do
   context "when lucky? is true" do
     it "returns Author-signed photo" do
@@ -936,8 +937,8 @@ end
 
 ```ruby
 describe "Book#bonus" do
-  context "lucky?がtrueのとき" do
-    it "チェキが返ること" do
+  context "when lucky? returns true" do
+    it "returns Author-signed photo" do
       book = Book.new
       allow(book).to receive(:lucky?).and_return(true)
       expect(book).to receive(:lucky?) # Write before executing the method call to be checked.
