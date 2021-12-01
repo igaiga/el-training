@@ -33,7 +33,7 @@
 - Rails6.1系最新
     - Rails 6.1.4.2
 - Ruby3.0系最新
-    - Ruby 3.0.2
+    - Ruby 3.0.3
 - rspec-rails 最新
     - rspec-rails 5.0.2
     - rspec-core 3.10.1
