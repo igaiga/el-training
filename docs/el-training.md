@@ -141,11 +141,51 @@ There is no need to create a model diagram for the correct answer at this time. 
     - If there are comments that need to be fixed later, please do so at that time.
 
 ### Step 6: Configure RuboCop
+
 - Let's set up RuboCop as a linter/formatter.
 - For this curriculum, we'll use [retrieva-cop](https://github.com/retrieva/retrieva-cop), which has been tweaked to work with Rails apps.
 - Install [retrieva-cop](https://github.com/retrieva/retrieva-cop) in your `Gemfile`.
+- Add followings into Gemfile
+
+```
+group :development do
+  gem "retrieva-cop", require: false
+end
+```
+
+- Run `bundle install`
+- Write the following in .rubocop.yml and place it in your Rails root directory.
+
+```yml
+inherit_gem:
+  retrieva-cop:
+    - "config/rubocop.yml"
+    # comment unless use rails cops
+    - "config/rails.yml"
+    # comment unless use rspec cops
+    - "config/rspec.yml"
+
+AllCops:
+  TargetRubyVersion: 3.0
+  # comment unless use rails cops
+  TargetRailsVersion: 6.1
+  Exclude:
+    - 'bin/**/*'
+    - 'config/**/*'
+    - 'db/**/*'
+```
+
+- If you want to run an inspection in RuboCop, run the following command.
+  - `bundle exec rubocop`.
+- If you want to automatically modify the results of a RuboCop run, run the following command.
+  - `bundle exec rubocop -A`.
+  - There are some test results that cannot be automatically corrected.
+  - Run it and commit the modified set of files.
+- The next time you write codes, you can use the rubocop command to inspect it.
+
 - Install GitHub Actions so that RuboCop will run when you create a PR.
-  - Considering the level of difficulty, it is also acceptable for a supporter to run it.
+#TODO GitHub Actions 対応方法を追記。実際に動かして設定ファイルを置くとか？パRails？
+- Considering the level of difficulty, it is also acceptable for a supporter to run it.
 - After that, let's discuss and update the coding conventions as needed.
 
 ### Step 7: Let's create a task model.
