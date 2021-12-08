@@ -10,6 +10,10 @@ This document is a curriculum for training new employees to learn the basics of 
 
 Slightly customized for Neumann.
 
+The sample codes for the first half is available here. If you are not sure, please refer to it.
+
+https://github.com/igaiga/el-training-igaiga-example
+
 ## Overview
 
 ## System Requirements
@@ -107,6 +111,7 @@ Topics that could not be included in a specific assignment step but should be us
 
 - Use the `rails new` command to create the minimum required directories and files for your application.
   - If you use the -d postgresql option when running rails new, step 5 will be easier
+  - `rails new el-training-igaiga -d postgresql`
 - Create a directory called `docs` directly under the `rails new` project directory (the directory of your app name) and commit this documentation file.
   - This is to keep the specification of the app under control and available for viewing at any time.
 - Push your app to the repository you created on GitHub.
@@ -120,14 +125,13 @@ Topics that could not be included in a specific assignment step but should be us
 - Read the requirements of the system and think about the data structure you need.
   - What kind of model (tables) do you need?
   - What kind of information is needed in the tables?
-- Once you have a data structure in mind, draw it by hand in an ER diagram or model diagram.
-  - When you are done, take a picture of it and put it in the repository.
-  - Describe the table schema in `README.md` (model name, column name, data type)
 
-There is no need to create a model diagram for the correct answer at this time. It is not necessary to create the correct model diagram at this time, but let's make it as an assumption at this time (if you think it is wrong in future steps, you can modify it).
+- There is no need to look up the correct answer at this time.
+- If you think it is wrong in future steps, you can modify it.
 
 ### Step 5: Configure the database connection (perimeter settings).
 
+- If you are using `-d postgresql` option to run rails new on step 3, you have no actions in the step.
 - First, create a new topic branch in Git.
   - After that, you can work on the topic branch and commit.
 - Install `pg` (database driver for PostgreSQL) in `Gemfile`.
@@ -135,10 +139,7 @@ There is no need to create a model diagram for the correct answer at this time. 
 - Create a database with the command `rails db:create`.
 - Check the connection to the database with the `rails db` command.
 - Create a PR on GitHub and have it reviewed.
-  - When you are working on a project and want others to review it, submit a PR in Draft or WIP (Work In Progress).
-  - If you get comments, please respond to them.
-  - In our work, we merge into the master branch when it is Approved (= LGTM, Looks Good To Me), but there are days when the reviewer is not available, so you can merge into master without review.
-    - If there are comments that need to be fixed later, please do so at that time.
+  - In business, you would merge when it is reviewed and OK, but in this training, waiting for the review will take a long time, so it is OK to merge first.
 
 ### Step 6: Configure RuboCop
 
@@ -147,7 +148,7 @@ There is no need to create a model diagram for the correct answer at this time. 
 - Install [retrieva-cop](https://github.com/retrieva/retrieva-cop) in your `Gemfile`.
 - Add followings into Gemfile
 
-```
+```Gemfile
 group :development do
   gem "retrieva-cop", require: false
 end
@@ -184,7 +185,9 @@ AllCops:
   - Run it and commit the modified set of files.
   - Since there will be a lot of changed files, you should separate the commit that sets up Rubocop from the commit that modifies the files.
 - The next time you write codes, you can use the rubocop command to inspect it.
-- Install GitHub Actions so that RuboCop will run when you create a PR.
+- Create PR and merge the branch.
+
+- Install GitHub Actions as CI so that RuboCop will run when you create a PR.
 
 ```.github/workflows/ruby.yml
 name: Ruby
@@ -224,8 +227,10 @@ PLATFORMS
 +  x86_64-linux
 ```
 
-- Check out the results in the Actions tab of GitHub Actions.
+- Create PR and check GitHub Actions result on the PR. Or you can also use the Actions tab.
   - https://github.com/#{your_name}/{your_repos_name}/actions
+- If the result is OK, try setting the result of the rubocop command to NG, and check the NG indication on GitHub Actions.
+- Make the result OK and merge the PR.
 
 ### Step 7: Let's create a task model.
 
@@ -233,13 +238,22 @@ Let's create a CRUD to manage the tasks.
 First, let's create a simple structure where only the name and details can be registered.
 
 - Use the `rails generate` command to create the model classes needed for the task CRUD.
+  - For example, you can use the following command
+  - `bin/rails g model task name:string description:text`
 - Let's create a migration and use it to create a table.
   - It is important to ensure that the migration can be reverted to a previous state! Make it a habit to run `redo` to check!
+  - For example, you can use the following command
+    - `bin/rails db:rollback` and `bin/rails db:migrate`
+    - `bin/rails db:migrate` and `bin/rails db:migrate:redo`
   - Don't forget to set the DB constraints!
+    - Add a no-null constraint to the name column.
+    - Try putting the index in the name column.
 - Make sure that you can connect to the database via a model with the `rails c` command.
   - At this time, let's try to create a record in ActiveRecord.
 - Set up validations
   - Let's figure out which column and which validation to add.
+  - Try to add a presense validation to the name column.
+  - Reference: https://guides.rubyonrails.org/active_record_validations.html
 - Create a PR on GitHub and have it reviewed
 
 ### Step 8: Let's make it possible to view, register, update, and delete tasks.
@@ -256,43 +270,47 @@ In other words, it is perfectly fine if the Step and PR are not one-to-one.
 
 - Let's make it possible to display the tasks created in step 7 in the list and detail screens.
 - Let's create controllers and views with the `rails generate` command.
-  - Consult with your supporters to decide which template engine to use.
 - Add the necessary implementations to your controllers and views.
 - Edit `routes.rb` so that `http://localhost:3000/` will display the task list screen.
-- Explain to your supporter what is going on between the web browser and the server.
-- Create a PR on GitHub for them to review.
+- Create a PR and merge it.
+- If you are not sure, please refer to the file generated by running `rails g scaffold task name:string description:text` .
+- If this is too difficult for you, please refer to the description in the "Rails textbook".
 
 ### Step 8-2: Create and Edit Task Screens
 
 - Let's make it possible to create and edit tasks on the screen.
 - Display a flash message on the screen after each creation or update.
   - When a validation error occurs, display the error message on the screen.
-- Create a PR on GitHub and have it reviewed
+  - Let's cause a validation error and display the message
+- Create a PR and merge it.
 
 ### Step 8-3: Make sure you can delete tasks
 
 - Let's make it possible to delete the task you created.
 - Display a flash message on the screen after deletion.
-- Create a PR on GitHub and have it reviewed.
-
-### Step 8-4: Look back at the code you've added
-
-- Explain to your supporters about the code you added in steps 8-1 to 8-3.
-  - About classes, methods and variables
-  - About the process flow
+- Create a PR and merge it.
 
 ### Step 9: Let's get to know SQL.
 
 - Let's work with the database.
   - Connect to a database with the `rails db` command.
   - Use SQL to browse, create, update, and delete tasks.
-- Access the task list screen and check the SQL log.
-  - Explain to your supporter what kind of SQL is being executed.
+
+- For example like this.
+
+```
+SELECT * FROM "tasks";
+SELECT * FROM "tasks" where tasks.id = 3;
+UPDATE tasks SET name = 'foo2', description = 'bar2' where id = 3;
+DELETE FROM "tasks" WHERE "tasks"."id" = 3;
+```
+
 - Check what kind of SQL is executed by the ActiveRecord methods.
   - Try to execute `find`, `where`, etc. with `rails c`.
 
 ### Step 10: Write the tests.
 
+- TODO: From here
 - TODO: Add igaiga text
 - Get ready to write specs!
   - Prepare `spec/spec_helper.rb` and `spec/rails_helper.rb`.
