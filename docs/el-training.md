@@ -173,6 +173,7 @@ AllCops:
     - 'bin/**/*'
     - 'config/**/*'
     - 'db/**/*'
+    - 'vendor/**/*'
 ```
 
 - If you want to run an inspection in RuboCop, run the following command.
@@ -181,12 +182,50 @@ AllCops:
   - `bundle exec rubocop -A`.
   - There are some test results that cannot be automatically corrected.
   - Run it and commit the modified set of files.
+  - Since there will be a lot of changed files, you should separate the commit that sets up Rubocop from the commit that modifies the files.
 - The next time you write codes, you can use the rubocop command to inspect it.
-
 - Install GitHub Actions so that RuboCop will run when you create a PR.
-#TODO GitHub Actions 対応方法を追記。実際に動かして設定ファイルを置くとか？パRails？
-- Considering the level of difficulty, it is also acceptable for a supporter to run it.
-- After that, let's discuss and update the coding conventions as needed.
+
+```.github/workflows/ruby.yml
+name: Ruby
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  rubocop:
+    name: rubocop
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        ruby-version: ['3.0']
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Ruby
+      uses: ruby/setup-ruby@v1
+      with:
+        ruby-version: ${{ matrix.ruby-version }}
+        bundler-cache: true # runs 'bundle install' and caches installed gems automatically
+    - name: Run rubocop
+      run: |
+        bundle exec rubocop
+```
+
+- To run a bundle install on GitHub Actions, add the x86_64-linux platform with the following command
+  - `bundle lock --add-platform x86_64-linux`
+  - Gemfile.lock will be updated and you can commit it.
+
+```diff
+PLATFORMS
+  arm64-darwin-21
++  x86_64-linux
+```
+
+- Check out the results in the Actions tab of GitHub Actions.
+  - https://github.com/#{your_name}/{your_repos_name}/actions
 
 ### Step 7: Let's create a task model.
 
